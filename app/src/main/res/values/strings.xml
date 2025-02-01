@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">cripto_app</string>
+
+    <string name="network_image">Imagem carregada da internet</string>
 </resources>

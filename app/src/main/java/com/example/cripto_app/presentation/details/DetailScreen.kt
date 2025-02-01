@@ -1,5 +1,6 @@
 package com.example.cripto_app.presentation.details
 
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
@@ -13,9 +14,18 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavHostController
 import com.example.cripto_app.R
+import com.example.cripto_app.domain.models.CoinDetails
+import com.example.cripto_app.presentation.details.components.CoinDetails
+import com.example.cripto_app.presentation.details.components.DetailsLoading
 
 @Composable
 fun DetailScreen(navController: NavHostController, viewModel: DetailViewModel = hiltViewModel()) {
+
+    val isLoading = viewModel.isLoading.value
+    val coinDetails = viewModel.coinDetails.value
+
+    Log.e("test", "Dados registrados: $coinDetails")
+
     Scaffold { innerPadding ->
         Box(
             Modifier
@@ -24,7 +34,8 @@ fun DetailScreen(navController: NavHostController, viewModel: DetailViewModel = 
                 .background(colorResource(R.color.dark_blue_600)),
             contentAlignment = Alignment.TopCenter,
         ) {
-
+            CoinDetails(coinDetails)
+            DetailsLoading(isLoading)
         }
     }
 }
@@ -32,4 +43,16 @@ fun DetailScreen(navController: NavHostController, viewModel: DetailViewModel = 
 @Preview
 @Composable
 fun DetailScreenPreview() {
+    Scaffold { innerPadding ->
+        Box(
+            Modifier
+                .padding(innerPadding)
+                .fillMaxSize()
+                .background(colorResource(R.color.dark_blue_600)),
+            contentAlignment = Alignment.TopCenter,
+        ) {
+            CoinDetails(null)
+            DetailsLoading(true)
+        }
+    }
 }

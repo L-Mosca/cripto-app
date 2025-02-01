@@ -1,6 +1,5 @@
 package com.example.cripto_app.ui.components
 
-import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
@@ -10,14 +9,13 @@ import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextOverflow
-import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.unit.TextUnit
-import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.cripto_app.R
 
 @Composable
 fun BaseText(
+    modifier: Modifier = Modifier,
     text: String,
     fontSize: TextUnit = 14.sp,
     color: Color = colorResource(id = R.color.white),
@@ -27,7 +25,6 @@ fun BaseText(
     textOverflow: TextOverflow = TextOverflow.Ellipsis,
     maxLines: Int = Int.MAX_VALUE,
     minLines: Int = 1,
-    padding: Dp = 0.dp,
 ) {
     return Text(
         text = text,
@@ -39,6 +36,6 @@ fun BaseText(
         overflow = textOverflow,
         maxLines = maxLines,
         minLines = minLines,
-        modifier = Modifier.padding(padding)
+        modifier = modifier,
     )
 }

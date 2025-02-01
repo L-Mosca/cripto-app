@@ -1,4 +1,4 @@
-package com.example.cripto_app.presentation.list.components
+package com.example.cripto_app.presentation.details.components
 
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.runtime.Composable
@@ -10,8 +10,7 @@ import com.example.cripto_app.R
 import com.example.cripto_app.ui.components.BaseLoading
 
 @Composable
-fun CoinListLoading(isLoading: Boolean) {
-
+fun DetailsLoading(isLoading: Boolean = false) {
     if (!isLoading) return
 
     BaseLoading(
@@ -23,6 +22,6 @@ fun CoinListLoading(isLoading: Boolean) {
 
 @Preview
 @Composable
-fun CoinListLoadingPreview() {
-    CoinListLoading(true)
+fun DetailsLoadingPreview() {
+    DetailsLoading(isLoading = true)
 }
