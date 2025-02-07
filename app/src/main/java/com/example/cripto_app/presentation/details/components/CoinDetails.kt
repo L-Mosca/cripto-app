@@ -5,6 +5,7 @@ import androidx.compose.animation.core.tween
 import androidx.compose.animation.fadeIn
 import androidx.compose.animation.slideInVertically
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
@@ -42,6 +43,7 @@ fun CoinDetails(details: CoinDetails? = null) {
             item { CoinName(details.name) }
             item { Spacer(Modifier.height(20.dp)) }
             item { CoinDescription(details.description) }
+            item { Spacer(Modifier.height(20.dp)) }
             item { CoinDetailImage(details.logo) }
             item { Spacer(Modifier.height(14.dp)) }
         }
@@ -68,7 +70,7 @@ fun CoinDescription(description: String?) {
 
     BaseText(
         text = description,
-        textAlign = TextAlign.Center,
+        textAlign = TextAlign.Justify,
         fontSize = 16.sp,
         color = colorResource(R.color.blue_100),
         fontWeight = FontWeight.W400,
@@ -82,13 +84,16 @@ fun CoinDescription(description: String?) {
 fun CoinDetailImage(imageUrl: String?) {
     if (imageUrl.isNullOrEmpty()) return
 
-    BaseRemoteImage(
-        imageUrl = imageUrl,
+    Box (
         contentAlignment = Alignment.Center,
-        modifier = Modifier
-            .size(100.dp, 100.dp)
-            .fillMaxWidth()
-    )
+        modifier = Modifier.fillMaxWidth()
+    ){
+        BaseRemoteImage(
+            imageUrl = imageUrl,
+            alignment = Alignment.Center,
+            modifier = Modifier.size(80.dp, 80.dp).fillMaxWidth(),
+        )
+    }
 }
 
 @Preview
