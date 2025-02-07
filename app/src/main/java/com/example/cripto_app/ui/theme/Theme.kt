@@ -47,12 +47,18 @@ fun CryptoTheme(
     }
 
     val view = LocalView.current
+    val context = LocalContext.current
+
+
     if (!view.isInEditMode) {
         SideEffect {
-            val window = (view.context as Activity).window
+            val window = (context as Activity).window
             window.statusBarColor = Color.Black.toArgb()
             window.navigationBarColor = Color.Black.toArgb()
-            WindowCompat.getInsetsController(window, view).isAppearanceLightStatusBars = darkTheme
+
+            val insetsController = WindowCompat.getInsetsController(window, view)
+            insetsController.isAppearanceLightStatusBars = false
+            insetsController.isAppearanceLightNavigationBars = false
         }
     }
 
