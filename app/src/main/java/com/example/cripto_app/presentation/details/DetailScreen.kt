@@ -22,7 +22,7 @@ fun DetailScreen(navController: NavHostController, viewModel: DetailViewModel = 
     val isLoading = viewModel.isLoading.value
     val coinDetails = viewModel.coinDetails.value
 
-    Scaffold { innerPadding ->
+    Scaffold(containerColor = colorResource(R.color.dark_blue_600)) { innerPadding ->
         Box(
             Modifier
                 .padding(innerPadding)
